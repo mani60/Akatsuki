@@ -1,0 +1,117 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block Banner %}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'images/akatsuki.jpeg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/itachi_uchiha.jpeg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/itachi_3.jpeg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+        </div>
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock Banner %}
+
+{% block About %}
+<div id="AboutUs">
+    <h1>Welcome to Akatsuki: Where Anime Unites!</h1>
+    <div class="content">
+        <p>Akatsuki is your ultimate destination for premium anime merchandise. Inspired by the enigmatic nature of its namesake, our store curates a diverse collection, from figurines to apparel, capturing the essence of your favorite series.</p>
+    </div>
+    <div class="content">
+        <p><strong>Our Promise:</strong></p>
+        <p>We're committed to authenticity and quality, collaborating directly with licensed distributors. Your satisfaction drives us, echoing the dedication of our namesake's members.</p>
+    </div>
+    <div class="content">
+        <p><strong>Join Us:</strong></p>
+        <p>Embrace the thrill of anime fandom with Akatsuki. Discover treasures from classics to the latest releases—all waiting to become part of your collection.</p>
+    </div>
+    <p class="team">- The Akatsuki Team</p>
+</div>
+{% endblock About %}
+
+{% block main-content %}
+<section id="products">
+    <div class="container py-5">
+      <h4 class="heading-prod text-center mb-5"><strong>商品</strong></h4>
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4 pos">
+          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+            <img src="{% static 'images/akatsuki.jpeg' %}"
+              class="w-100" />
+            <a href="#!">
+                <div class="d-flex justify-content-start align-items-start h-100 on-img">
+                  <h5><span class="badge">More</span></h5>
+                </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 pos">
+          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+            <img src="{% static 'images/akatsuki.jpeg' %}"
+              class="w-100" />
+            <a href="#!">
+                <div class="d-flex justify-content-start align-items-start h-100 on-img">
+                  <h5><span class="badge">More</span></h5>
+                </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 pos">
+          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+            <img src="{% static 'images/akatsuki.jpeg' %}"
+              class="w-100" />
+            <a href="#!">
+                <div class="d-flex justify-content-start align-items-start h-100 on-img">
+                  <h5><span class="badge">More</span></h5>
+                </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center pos">
+        <div class="col-lg-4 col-md-6 mb-4 text-center">
+          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+            <img src="{% static 'images/akatsuki.jpeg' %}"
+              class="w-100" />
+            <a href="#!">
+                <div class="d-flex justify-content-start align-items-start h-100 on-img">
+                    <h5><span class="badge">More</span></h5>
+                </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock main-content %}

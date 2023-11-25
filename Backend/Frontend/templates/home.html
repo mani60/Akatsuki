@@ -42,76 +42,60 @@
 </div>
 {% endblock Banner %}
 
-{% block About %}
-<div id="AboutUs">
-    <h1>Welcome to Akatsuki: Where Anime Unites!</h1>
-    <div class="content">
-        <p>Akatsuki is your ultimate destination for premium anime merchandise. Inspired by the enigmatic nature of its namesake, our store curates a diverse collection, from figurines to apparel, capturing the essence of your favorite series.</p>
-    </div>
-    <div class="content">
-        <p><strong>Our Promise:</strong></p>
-        <p>We're committed to authenticity and quality, collaborating directly with licensed distributors. Your satisfaction drives us, echoing the dedication of our namesake's members.</p>
-    </div>
-    <div class="content">
-        <p><strong>Join Us:</strong></p>
-        <p>Embrace the thrill of anime fandom with Akatsuki. Discover treasures from classics to the latest releases—all waiting to become part of your collection.</p>
-    </div>
-    <p class="team">- The Akatsuki Team</p>
-</div>
-{% endblock About %}
+
 
 {% block main-content %}
 <section id="products">
     <div class="container py-5">
-      <h4 class="heading-prod text-center mb-5"><strong>商品</strong></h4>
+      <h4 class="heading-prod text-center mb-5"><strong>SHOP BY ANIME</strong></h4>
       <div class="row">
-        <div class="col-lg-4 col-md-12 mb-4 pos">
-          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="{% static 'images/akatsuki.jpeg' %}"
-              class="w-100" />
-            <a href="#!">
-                <div class="d-flex justify-content-start align-items-start h-100 on-img">
-                  <h5><span class="badge">More</span></h5>
-                </div>
-            </a>
-          </div>
+        
+        <div class="col-md-4  col-6 pos">
+          <div class="prod_snippet">
+            <p class="cat_name">Toys</p>
+            <a class="category_link" href="{% url 'category' 'toys' %}">
+              <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+                <img src="{% static 'images/akatsuki.jpeg' %}"
+                  class="w-100" />
+              </div>
+              </a>
+          </div>   
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 pos">
-          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="{% static 'images/akatsuki.jpeg' %}"
-              class="w-100" />
-            <a href="#!">
-                <div class="d-flex justify-content-start align-items-start h-100 on-img">
-                  <h5><span class="badge">More</span></h5>
-                </div>
-            </a>
-          </div>
+        <div class="col-md-4  col-6 pos ">
+          <div class="prod_snippet">
+            <p class="cat_name">manga</p>
+            <a class="category_link" href="{% url 'category' 'manga' %}"> 
+              <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+                <img src="{% static 'images/akatsuki.jpeg' %}"
+                  class="w-100" />   
+              </div>
+              </a>
+          </div>  
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 pos">
-          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="{% static 'images/akatsuki.jpeg' %}"
-              class="w-100" />
-            <a href="#!">
-                <div class="d-flex justify-content-start align-items-start h-100 on-img">
-                  <h5><span class="badge">More</span></h5>
-                </div>
-            </a>
-          </div>
+        <div class="col-md-4  col-6 pos">
+          <div class="prod_snippet">
+            <p class="cat_name">costumes</p>
+            <a class="category_link" title="costumes" href="{% url 'category' 'costumes' %}">
+              <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+                <img src="{% static 'images/akatsuki.jpeg' %}"
+                  class="w-100" /> 
+              </div>
+              </a>
+          </div>        
         </div>
-      </div>
-      <div class="row justify-content-center pos">
-        <div class="col-lg-4 col-md-6 mb-4 text-center">
-          <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
-            <img src="{% static 'images/akatsuki.jpeg' %}"
-              class="w-100" />
-            <a href="#!">
-                <div class="d-flex justify-content-start align-items-start h-100 on-img">
-                    <h5><span class="badge">More</span></h5>
-                </div>
-            </a>
-          </div>
+        <div class="col-md-4  col-6 pos">
+        <div class="prod_snippet">
+          <p class="cat_name">posters</p>
+          <a class="category_link"  href="{% url 'category' 'posters' %}">
+            <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+              <img src="{% static 'images/akatsuki.jpeg' %}"
+                class="w-100" />
+            </div>
+          </a>
         </div>
-      </div>
+        </div>
     </div>
+    </div>
+
   </section>
 {% endblock main-content %}

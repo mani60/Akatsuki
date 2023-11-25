@@ -156,11 +156,57 @@ footer{
 .heading-prod{
   color: #b5121a;
 }
-.bg-image img{
-  border-radius: 24px;
-}
+
 .pos{
   position: relative;
+  margin-bottom: 1.5rem;
+  padding:0 0.75rem;
+}
+.category_link:hover::before{
+  background: rgba(0,0,0,0);
+
+}
+.category_link:hover img {
+  transform: scale(1.025)!important;
+}
+.category_link::before{
+    content: "";
+   
+    position: absolute;
+    background: rgba(0,0,0,.6);
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+
+}
+/* .category_link::after{
+  content: attr(title);
+  position: absolute;
+  z-index: 1;
+  top:50%;
+  transform: translateY(-50%) ;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #df5757;
+  padding: 0 3rem;
+} */
+.prod_snippet{
+  position: relative;
+  
+}
+.cat_name{
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #eb4640;
+  font-weight: 600;
+  position: absolute;
+  bottom: 0;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 .on-img span{
   position: absolute;
@@ -181,3 +227,105 @@ footer{
   font-size: 20px;
   letter-spacing: 1px;
 }
+
+
+/* .products{
+  display: flex;
+  flex-direction: column;
+ 
+
+ 
+  align-items: center;
+} */
+.product{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9rem;
+  justify-content: center;
+}
+.prod_desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.price{
+  position: absolute;
+  bottom: -30px;
+}
+.cards-list {
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    gap: 9rem;
+}
+
+
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+
+
+
+
+/* .card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  transition: 0.4s;
+} */

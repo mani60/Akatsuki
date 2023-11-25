@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Category{% endblock title %}
+{% block main-content%}
+<section id="products" class="products">
+    <h1>{{ value }}</h1>
+
+    <div class="cards-list">
+      
+            {% for product in products %}
+            <a href="#">
+               
+  
+                    <div class="card 1">
+                      <div class="card_image"> <img src="{{ product.prodimg.url }}" /> </div>
+                      <div class="card_title title-white prod_desc">
+                        <p>{{product.Title}}</p>
+                       
+                      </div>
+                       <div class="price">
+                            <span class="s_price">${{product.selling_price}} </span>
+                            <span class="d_price">${{product.discounted_price}}</span>
+                        </div>
+                    </div>
+                    
+                     
+                    
+                
+<!--             
+                <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+                    <img src="{{ product.prodimg.url }}"  height="300px" width="300px"/>
+                    <div class="prod_desc">
+                        <h3>{{product.Title}}</h3>
+                        <div class="price">
+                            <span class="s_price">${{product.selling_price}} </span>
+                            <span class="d_price">${{product.discounted_price}}</span>
+                        </div>
+                       
+                     
+                    </div>
+                   
+
+                    
+                </div> -->
+            </a>
+        
+            {% endfor %}
+      
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock main-content%}

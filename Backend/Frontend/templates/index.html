@@ -17,18 +17,18 @@
         <nav>
         <a class="logo">Akatsuki</a>
         <div class="nav-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#AboutUs">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Products
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #171c24;">
-                <li><a class="dropdown-item" href="#">Toys</a></li>
-                <li><a class="dropdown-item" href="#">costumes</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'toys' %}">Toys</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'costumes' %}">costumes</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Manga</a></li>
-                <li><a class="dropdown-item" href="#">Posters</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'manga' %}">Manga</a></li>
+                <li><a class="dropdown-item" href="{% url 'category' 'posters' %}">Posters</a></li>
               </ul>
             </li>
             <li><a href="#">Orders</a></li>
@@ -47,10 +47,8 @@
 
         {% endblock Banner %}
 
-        {% block About %}
-
-        {% endblock About %}
-        <hr>
+     
+        
         {% block main-content%}
 
         {% endblock main-content%}

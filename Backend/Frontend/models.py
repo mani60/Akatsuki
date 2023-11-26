@@ -23,5 +23,16 @@ class Product(models.Model):
         return self.Title
 
 
+class Cart(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity=models.PositiveIntegerField(default=1)
+
+    @property
+    def totalcost(self):
+        return self.quantity*self.product.discounted_price
+
+
+
+
 
 

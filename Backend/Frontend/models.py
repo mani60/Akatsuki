@@ -17,8 +17,6 @@ class Product(models.Model):
     selling_price=models.FloatField()
     discounted_price=models.FloatField()
     Description=models.TextField()
-  
-  
     category=models.CharField(choices=CATEGORY_CHOICES,max_length=10)
     prodimg=models.ImageField(upload_to='product')
     def __str__(self) :

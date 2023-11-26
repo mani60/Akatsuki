@@ -10,8 +10,6 @@ def about(request):
 class category(View):
     def get(self,request,value):
         products=Product.objects.filter(category=value)
-        
-           
         return render(request,"category.html",locals())
 
  

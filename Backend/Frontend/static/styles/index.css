@@ -97,6 +97,11 @@ nav form button:hover {
 #AboutUs  strong{
   color: #b5121a;
 }
+.about_banner video{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
 
 .content {
   margin-top: 2rem;

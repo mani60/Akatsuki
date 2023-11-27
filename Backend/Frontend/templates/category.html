@@ -15,15 +15,15 @@
         <div class="col-lg-4 col-md-4 col-12">
             <div class="single-product">
                 <div class="product-img">
-                    <a href="#">
+                    <a href="{% url 'product-detail' product.id %}">
                         <img class="default-img" src="{{ product.prodimg.url }}" alt="#">
                         <span class="out-of-stock">Hot</span>
                     </a>
                 </div>
                 <div class="product-content d-flex flex-column">
-                    <h3><a href="#">{{product.Title}}</a></h3>
+                    <h3><a href="{% url 'product-detail' product.id %}">{{product.Title}}</a></h3>
                     <div class="product-price">
-                        <span class="old">${{product.discounted_price}}0</span>
+                        <span class="old">${{product.discounted_price}}</span>
                         <span>${{product.selling_price}}</span>
                     </div>
                 </div>
@@ -51,10 +51,5 @@
         </div>
     </div>
 </section>
-
-
-
-
-
 
 {% endblock main-content%}

@@ -1,0 +1,99 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}product{% endblock title %}
+{% block main-content%}
+<section class="my-5" id="Description">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="text-end mb-4 desc_img">
+                <img src="{{ product.prodimg.url }}" class="img-fluid" alt="Product-img">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ps-lg-4">
+                <h2 class="mt-0"> {{product.Title}} </h2>
+                <p class="mb-1">Added Date: 09/12/2018</p>
+                <p class="mb-1">Category: {{product.category}}</p>
+                <div class="mt-3">
+                    <h4><span class="badge">Instock</span></h4>
+                </div>
+                <div class="mt-4">
+                    <h6 class="font-14">Retail Price:</h6>
+                    <h3>${{product.selling_price}}</h3>
+                    <span class="old">${{product.discounted_price}}</span>
+                </div>
+                <div class="mt-4">
+                    <h6 class="font-14">Quantity</h6>
+                    <div class="d-flex desc_inp">
+                        <input type="number" min="1" class="form-control" placeholder="Qty" required>
+                        <button type="button" class="add_btn btn btn-danger ms-2"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                        <button type="button" class="add_btn btn btn-danger ms-2"><i class="fa fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h6 class="">Description:</h6>
+                    <p>{{product.Description}} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum inventore, qui blanditiis eius reprehenderit deserunt dicta sint enim, voluptas asperiores modi fuga omnis sapiente nemo doloribus beatae dolor. Dolorum, aperiam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ipsa iste vero non ipsum excepturi quo facilis consequuntur aliquid illum perspiciatis alias soluta quam minima et qui molestias, fuga reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fugiat illum necessitatibus itaque quis placeat laudantium consequatur, commodi sequi explicabo quidem ratione dolorem quae sed minima dolor quas autem aut.</p>
+                </div>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="font-14">Available Stock:</h6>
+                            <p class="text-sm lh-150">1784</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="my-2">
+    <div id="products" class="products">
+        <div class="container">
+            <div class="row">
+                <div class="title-sectioncol-12">
+                  <h3 class="text-start head_rel text-uppercase">all related items</h3>
+                </div>
+              </div>
+            <div class="row">
+            {% for product in R_prods %}
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="single-product">
+                    <div class="product-img">
+                        <a href="{% url 'product-detail' product.id %}">
+                            <img class="default-img" src="{{ product.prodimg.url }}" alt="#">
+                            <span class="out-of-stock">Hot</span>
+                        </a>
+                    </div>
+                    <div class="product-content d-flex flex-column">
+                        <h3><a href="{% url 'product-detail' product.id %}">{{product.Title}}</a></h3>
+                        <div class="product-price">
+                            <span class="old">${{product.discounted_price}}</span>
+                            <span>${{product.selling_price}}</span>
+                        </div>
+                    </div>
+                    <form action="/add_to_cart">
+                      <input type="hidden" name="prod_id" value="{{product.id}}">
+                      <button type="submit" class="cat_buy_now">Add to cart</button>
+                      <!-- <div class="Buy_now_btn">
+                        <a href="{% url 'showcart' %}" class="cat_buy_now">Buy Now</a>
+                      </div> -->
+                    </form>
+                  
+                 
+                </div>
+            </div>
+            {% endfor %}
+            <!-- {% for product in products %}
+              <div class="col-lg-4 col-md-6 item-entry mb-4">
+                <a href="#" class="product-item md-height bg-gray d-block">
+                  <img src="{{ product.prodimg.url }}" alt="Image" class="img-fluid">
+                </a>
+                <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
+                <strong class="item-price"><del>${{product.discounted_price}}</del> ${{product.selling_price}}</strong>
+              </div>
+              {% endfor %} -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main-content%}

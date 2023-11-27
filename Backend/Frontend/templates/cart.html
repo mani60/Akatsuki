@@ -11,31 +11,24 @@
           </div>
         </div>
         <div class="row">
-        {% for product in products %}
+        {% for item in cart %}
         <div class="col-lg-4 col-md-4 col-12">
             <div class="single-product">
                 <div class="product-img">
-                    <a href="{% url 'product-detail' product.id %}">
-                        <img class="default-img" src="{{ product.prodimg.url }}" alt="#">
+                    <a href="#">
+                        <img class="default-img" src="{{ item.product.prodimg.url }}" alt="#">
                         <span class="out-of-stock">Hot</span>
                     </a>
                 </div>
                 <div class="product-content d-flex flex-column">
-                    <h3><a href="{% url 'product-detail' product.id %}">{{product.Title}}</a></h3>
+                    <h3><a href="#">{{item.product.Title}}</a></h3>
                     <div class="product-price">
-                        <span class="old">${{product.discounted_price}}</span>
-                        <span>${{product.selling_price}}</span>
+                        <span class="old">${{product.discounted_price}}0</span>
+                        <span>${{item.product.selling_price}}</span>
                     </div>
                 </div>
-                <form action="/add_to_cart">
-                  <input type="hidden" name="prod_id" value="{{product.id}}">
-                  <button type="submit" class="cat_buy_now">Add to cart</button>
-                  <!-- <div class="Buy_now_btn">
-                    <a href="{% url 'showcart' %}" class="cat_buy_now">Buy Now</a>
-                  </div> -->
-                </form>
               
-             
+              
             </div>
         </div>
         {% endfor %}
@@ -51,5 +44,6 @@
         </div>
     </div>
 </section>
+
 
 {% endblock main-content%}

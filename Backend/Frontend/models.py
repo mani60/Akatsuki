@@ -5,10 +5,6 @@ CATEGORY_CHOICES=(
     ("manga","manga"),
     ("costumes","costumes"),
     ("posters","posters")
-
-
-  
-
 )
 
 # Create your models here.\
@@ -21,6 +17,16 @@ class Product(models.Model):
     prodimg=models.ImageField(upload_to='product')
     def __str__(self) :
         return self.Title
+
+
+class Cart(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity=models.PositiveIntegerField(default=1)
+    @property
+    def totalcost(self):
+        return self.quantity*self.product.discounted_price
+
+
 
 
 

@@ -30,4 +30,7 @@ def cart(request):
     cart=Cart.objects.all()
     return render(request,"cart.html",locals())
 
+def custom_404(request, exception):
+    return render(request, '404.html')
+
  

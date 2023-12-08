@@ -13,6 +13,7 @@
 
 body {
   background: #f2f2f2;
+  text-transform: capitalize;
 }
 
 nav {
@@ -270,7 +271,7 @@ footer{
 }
 .single-product .product-content h3 a {
   display: block;
-  font-size: 1em;
+  font-size: 0.6em;
   color: #141519;
   font-weight: 500;
   margin: 0;
@@ -408,7 +409,8 @@ footer{
   width: 90px;
 }
 #Description .old{
-  text-decoration: line-through !important;
+  color: #ed1b24;
+  text-decoration: line-through #ed1b24 !important;
 }
 .head_rel{
   margin-top: 30px;

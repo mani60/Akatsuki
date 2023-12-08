@@ -17,7 +17,8 @@ class category(View):
 class productDetail(View):
     def get(self,request,pk):
         product = Product.objects.get(pk = pk)
-        R_prods = Product.objects.filter().exclude(pk=pk)
+        p_cat = product.category
+        R_prods = Product.objects.filter(category= p_cat).exclude(pk=pk)
         return render(request,"product_details.html",locals())
 
 def add_to_cart(request):
@@ -29,5 +30,8 @@ def add_to_cart(request):
 def cart(request):
     cart=Cart.objects.all()
     return render(request,"cart.html",locals())
+
+def custom_404(request, exception):
+    return render(request, '404.html')
 
  

@@ -16,7 +16,11 @@
                 <p class="mb-1">Added Date: 09/12/2018</p>
                 <p class="mb-1">Category: {{product.category}}</p>
                 <div class="mt-3">
-                    <h4><span class="badge">Instock</span></h4>
+                    {% if product.quantity >= 1 %}
+                        <h4><span class="badge">Instock</span></h4>
+                    {% else %}
+                        <h4><span class="badge">Out Of Stock</span></h4>
+                    {% endif %} 
                 </div>
                 <div class="mt-4">
                     <h6 class="font-14">Retail Price:</h6>
@@ -24,12 +28,14 @@
                     <span class="old">${{product.discounted_price}}</span>
                 </div>
                 <div class="mt-4">
+                    {% if product.quantity >= 1 %}
                     <h6 class="font-14">Quantity</h6>
                     <div class="d-flex desc_inp">
                         <input type="number" min="1" class="form-control" placeholder="Qty" required>
                         <button type="button" class="add_btn btn btn-danger ms-2"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                         <button type="button" class="add_btn btn btn-danger ms-2"><i class="fa fa-heart"></i></button>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="mt-4">
                     <h6 class="">Description:</h6>
@@ -47,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <h6 class="font-14">Available Stock:</h6>
-                            <p class="text-sm lh-150">1784</p>
+                            <p class="text-sm lh-150">{{product.quantity}}</p>
                         </div>
                     </div>
                 </div>

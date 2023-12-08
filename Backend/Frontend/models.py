@@ -15,13 +15,14 @@ class Product(models.Model):
     Description=models.TextField()
     category=models.CharField(choices=CATEGORY_CHOICES,max_length=10)
     prodimg=models.ImageField(upload_to='product')
+    quantity=models.PositiveIntegerField(default=0)
     def __str__(self) :
         return self.Title
 
 
 class Cart(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.CASCADE)
-    quantity=models.PositiveIntegerField(default=1)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
     @property
     def totalcost(self):
         return self.quantity*self.product.discounted_price

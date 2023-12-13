@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Orders{% endblock title %}
+{% block main-content%}
+<section id="cart">
+  <div class="container">
+    <div class="title-sectioncol-12">
+          <h2 class="text-uppercase">Orders</h2>
+    </div>
+    {% if Orders %}
+    {%csrf_token%}
+      <div class="container h-100 pt-2 pb-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="row">
+            <div class="table-responsive col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ninja Tools</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total_amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in Orders %}
+                  <tr>
+                    <th scope="row">
+                      <div class="d-flex align-items-center">
+                        <a href="{% url 'product-detail' item.product.id %}">
+                        <img src="{{ item.product.prodimg.url }}" class="rounded-1">
+                        </a>
+                        <div class="flex-column ms-4">
+                          <h3><a href="{% url 'product-detail' item.product.id %}">{{item.product.Title}}</a></h3>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle">
+                      <p class="mb-0" style="font-weight: 500;">{{item.product.category}}</p>
+                    </td>
+                    <td class="align-middle">
+                      <div class="d-flex flex-row">
+                        <span class="quan">{{item.quantity}}</span>  
+                      </div>
+                    </td>
+                    <td class="align-middle">
+                      <div class="product-price">
+                        <span>${{item.total}}</span>
+                      </div>
+                    </td>
+                    <td></td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td><h4>Shinobi Spending Sum</h4></td>
+                    <td class="align-middle">
+                        <div class="product-price">
+                          <span>${{total_amount}}</span>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="nf_page container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-8 m-auto">
+                <p class="mb-50"><img src="{% static 'images/shoto.jpeg' %}" height="400px" width="700px" style="object-fit: contain;" alt="" class="hover-up"></p>
+                <p class="font-lg text-grey-700 mb-30">
+                    Looks like your ninja pouch is feeling a bit light!<br> Time to summon some jutsu and fill it up with awesome <a href="{% url 'category' 'toys' %}" style="color: #ed1b24;" onMouseOver="this.style.color='#b5121a'"
+                    onMouseOut="this.style.color='#ed1b24'"> <span> Naruto gear.</span></a> Let's ninja-shop our way to greatness!
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock main-content%}

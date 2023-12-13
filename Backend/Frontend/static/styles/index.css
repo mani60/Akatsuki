@@ -393,14 +393,14 @@ table img{
 .elems{
   min-height: 200px;
 }
-table{
+#cart table{
   background-color: #fff;
   border-radius: 12px;
 }
-th, td {
+#cart th, td {
   padding: 15px;
 }
-tr { 
+#cart tr { 
   border: solid;
   border-width: 0.5px 0;
   border-color: #92080f;
@@ -413,11 +413,6 @@ tr {
 #cart i{
   color: #f2f2f2;;
 
-}
-#cart input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 #cart .quan{
   width: 50px;
@@ -436,20 +431,26 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .dec:hover,.inc:hover,.cross:hover{
   background: #92080f;
+  border-color: #92080f;
   color: #fff;
 }
 .cross{
   padding: 8px;
   border-radius: 5px;
 }
-.ck_out{
+#cart .ck_out{
   background-color: #b5121a;
   border-color: #b5121a;
 }
-.ck_out:hover{
+#cart .ck_out:hover{
   background-color: #92080f;
   border-color: #92080f;
 }
 #cart .card{
   --bs-card-border-color:#92080f;
+}
+#cart .inc:active, #cart .dec:active{
+  background: #92080f;
+  border-color: #92080f;
+  color: #fff;
 }

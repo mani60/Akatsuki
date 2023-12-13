@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from . models import Product,Cart
+from . models import Product,Cart,Order
 from django.http import JsonResponse
 from django.db.models import Q
 # Create your views here.
@@ -27,7 +27,13 @@ class productDetail(View):
 def add_to_cart(request):
     product_id=request.GET.get('prod_id')
     product=Product.objects.get(id=product_id)
-    Cart(product=product).save()
+    c=Cart.objects.filter(product=product).exists()
+    if c:
+        add = Cart.objects.get(product=product)
+        add.quantity+=1
+        add.save()
+    else:
+        Cart(product=product).save()
     product.quantity-=1
     product.save()
     return redirect("/cart")
@@ -36,7 +42,7 @@ def cart(request):
     cart = Cart.objects.all()
     amount = 0
     for p in cart:
-        value = p.quantity * p.product.discounted_price
+        value = p.quantity * p.product.selling_price
         amount = amount + value
     amount = round(amount, 2)
     total_amount = round(amount + 40,2)
@@ -60,7 +66,7 @@ def IncCart(request):
         cart = Cart.objects.all()
         amount = 0
         for p in cart:
-            value = p.quantity * p.product.discounted_price
+            value = p.quantity * p.product.selling_price
             amount = amount + value
         amount = round(amount, 2)
         total_amount = round(amount + 40,2)
@@ -83,7 +89,7 @@ def DecCart(request):
         cart = cart = Cart.objects.all()
         amount = 0
         for p in cart:
-            value = p.quantity * p.product.discounted_price
+            value = p.quantity * p.product.selling_price
             amount = amount + value
         amount = round(amount, 2)
         total_amount = round(amount + 40,2)
@@ -102,10 +108,10 @@ def RemoveItem(request):
         product.quantity+=c.quantity
         product.save()
         c.delete()
-        cart = cart = Cart.objects.all()
+        cart = Cart.objects.all()
         amount = 0
         for p in cart:
-            value = p.quantity * p.product.discounted_price
+            value = p.quantity * p.product.selling_price
             amount = amount + value
         amount = round(amount, 2)
         total_amount = round(amount + 40,2)
@@ -115,3 +121,26 @@ def RemoveItem(request):
             'total_amount': total_amount
         }
         return JsonResponse(data)
+
+
+def add_to_Order(request):
+    total=request.GET.get('total_amt')
+    cart = Cart.objects.all()
+    for data in cart:
+        total = data.quantity * data.product.selling_price
+        Order(
+            product=data.product, 
+            quantity=data.quantity,
+            total = total
+        ).save()
+    cart.delete() 
+    return redirect("/Orders")
+
+def Orders(request):
+    Orders = Order.objects.all()
+    amount = 0
+    for p in Orders:
+        amount += p.total 
+    amount = round(amount, 2)
+    total_amount = round(amount + 40,2)
+    return render(request,"Orders.html",locals())

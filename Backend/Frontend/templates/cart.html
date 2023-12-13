@@ -61,7 +61,6 @@
                 </tbody>
               </table>
             </div>
-    
             <div class="col-md-4">
               <div class="card mb-4 summary">
                 <div class="card-header py-3">
@@ -84,10 +83,10 @@
                       <span><strong id="t_amt">${{total_amount}}</strong></span>
                     </li>
                   </ul>
-      
-                  <button type="button" class="btn btn-primary ck_out">
-                    Go to checkout
-                  </button>
+                  <form action="/add_to_Order" method="get">
+                  <input type="hidden" name="total_amt" value="{{total_amount}}">
+                  <button type="submit" class="btn btn-primary ck_out">Order</button>
+                  </form>
                 </div>
               </div>
             </div>

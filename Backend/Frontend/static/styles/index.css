@@ -10,7 +10,6 @@
   outline: none;
   cursor: url("https://cdn.custom-cursor.com/db/cursor/32/Naruto_Sakura_HarunoKunaiShurikenCursor.png"),auto  !important;
 }
-
 body {
   background: #f2f2f2;
   text-transform: capitalize;
@@ -221,7 +220,7 @@ footer{
   font-size: 20px;
   letter-spacing: 1px;
 }
-#products h2{
+#products h2,#cart h2{
   margin-top: 30px;
   font-size: 50px;
   color: #b5121a;
@@ -270,7 +269,7 @@ footer{
   line-height: 22px;
   justify-content:flex-start ;
 }
-.single-product .product-content h3 a {
+.single-product .product-content h3 a,#cart h3 a {
   display: block;
   font-size: 0.6em;
   color: #141519;
@@ -280,14 +279,14 @@ footer{
   text-transform: capitalize;
   transition: 0.1s ease-in-out;
 }
-.single-product .product-content h3 a:hover{
+.single-product .product-content h3 a:hover,#cart h3 a:hover{
   color: #b5121a;
 }
-.single-product .product-content .product-price {
+.single-product .product-content .product-price , #cart .product-price{
   margin: 4px 0;
   line-height: 1;
 }
-.single-product .product-content .product-price span.old {
+.single-product .product-content .product-price span.old{
   text-decoration: line-through !important;
   float: right;
   opacity: .6;
@@ -296,7 +295,7 @@ footer{
   margin-right: 15px;
   font-weight: 400;
 }
-.single-product .product-content .product-price span {
+.single-product .product-content .product-price span,#cart .product-price span{
   font-size: 20px;
   font-weight: 500;
   color: #b5121a;
@@ -339,53 +338,6 @@ footer{
   color: #fff;
 }
 
-/* #Description h3{
-  margin-top: 30px;
-  font-size: 50px;
-  color: #b5121a;
-  font-weight: bolder;
-  text-align: center;
-  text-transform: uppercase;
- }
- .desc-img{
-  position: relative;
- }
- #Description .desc-img img{
-  height: 700px;
-  object-fit: contain;
-  width: 100%;
-}
-.desc-img .out-of-stock {
-  background-color: #ed1b24;
-  display: inline-block;
-  font-size: 11px;
-  color: #fff;
-  right: 110px;
-  top: 30px;
-  padding: 1px 16px;
-  font-weight: 700;
-  border-radius: 0;
-  text-align: center;
-  position: absolute;
-  text-transform: uppercase;
-  border-radius: 30px;
-  height: 26px;
-  line-height: 24px;
-} */
-/* .item {
-  padding: 0 3rem;
-  max-width: 134rem;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 0.4fr 1fr;
-  gap: 10rem;
-  margin: 5rem 0rem;
-}
-.img-main {
-  width: 100%;
-  border-radius: 7px;
-  height: 700px;
-} */
 .desc_img img{
   height: 700px;
   width: 500px;
@@ -426,4 +378,78 @@ footer{
 .add_btn:hover{
   background-color: #92080f;
   border: #92080f;
+}
+#cart{
+  min-height: 600px;
+}
+table img{
+  height: 150px !important;
+  width: 120px !important;
+  object-fit: cover;
+}
+.nf_page{
+  margin: 20px 0;
+}
+.elems{
+  min-height: 200px;
+}
+table{
+  background-color: #fff;
+  border-radius: 12px;
+}
+th, td {
+  padding: 15px;
+}
+tr { 
+  border: solid;
+  border-width: 0.5px 0;
+  border-color: #92080f;
+}
+#footer {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+#cart i{
+  color: #f2f2f2;;
+
+}
+#cart input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#cart .quan{
+  width: 50px;
+  text-align: center;
+  background-color: #edeaea;
+  padding-top: 7px;
+}
+.dec,.inc,.cross{
+  background-color: #b5121a;
+}
+.dec{
+  border-radius: 5px 0px 0px 5px
+}
+.inc{
+  border-radius: 0px 5px 5px 0px
+}
+.dec:hover,.inc:hover,.cross:hover{
+  background: #92080f;
+  color: #fff;
+}
+.cross{
+  padding: 8px;
+  border-radius: 5px;
+}
+.ck_out{
+  background-color: #b5121a;
+  border-color: #b5121a;
+}
+.ck_out:hover{
+  background-color: #92080f;
+  border-color: #92080f;
+}
+#cart .card{
+  --bs-card-border-color:#92080f;
 }

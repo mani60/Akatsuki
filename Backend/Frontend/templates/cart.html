@@ -1,49 +1,113 @@
 {% extends 'index.html' %}
 {% load static %}
 
-{% block title %}Category{% endblock title %}
+{% block title %}Cart{% endblock title %}
 {% block main-content%}
-<section id="products" class="products">
-    <div class="container">
-        <div class="row">
-          <div class="title-sectioncol-12">
-            <h2 class="text-uppercase">{{ value }}</h2>
+<section id="cart">
+  <div class="container">
+    <div class="title-sectioncol-12">
+          <h2 class="text-uppercase">CART</h2>
+    </div>
+    {% if cart %}
+    {%csrf_token%}
+      <div class="container h-100 pt-2 pb-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="row">
+            <div class="table-responsive col-md-8">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Ninja Tools</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in cart %}
+                  <tr>
+                    <th scope="row">
+                      <div class="d-flex align-items-center">
+                        <a href="{% url 'product-detail' item.product.id %}">
+                        <img src="{{ item.product.prodimg.url }}" class="rounded-1">
+                        </a>
+                        <div class="flex-column ms-4">
+                          <h3><a href="{% url 'product-detail' item.product.id %}">{{item.product.Title}}</a></h3>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle">
+                      <p class="mb-0" style="font-weight: 500;">{{item.product.category}}</p>
+                    </td>
+                    <td class="align-middle">
+                      <div class="d-flex flex-row">
+                        <a class="btn  px-2 dec" id="{{item.product.id}}" onclick="down(this)">
+                          <i class="fas fa-minus"></i>
+                        </a>
+                        <span class="quan">{{item.quantity}}</span>  
+                        <a class="btn btn-link px-2 inc" id="{{item.product.id}}" onclick="up(this)">
+                          <i class="fas fa-plus"></i>
+                        </a>
+                      </div>
+                    </td>
+                    <td class="align-middle">
+                      <div class="product-price">
+                        <span>${{item.product.selling_price}}</span>
+                      </div>
+                    </td>
+                    <td><a id="{{item.product.id}}" class="cross" onclick="del(this)"><i class="fa-solid fa-xmark"></i></a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+    
+            <div class="col-md-4">
+              <div class="card mb-4 summary">
+                <div class="card-header py-3">
+                  <h5 class="mb-0">Summary</h5>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                      Amount
+                      <span id="amt">${{amount}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                      Shipping
+                      <span>$40</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                      <div>
+                        <strong>Total amount</strong>
+                      </div>
+                      <span><strong id="t_amt">${{total_amount}}</strong></span>
+                    </li>
+                  </ul>
+      
+                  <button type="button" class="btn btn-primary ck_out">
+                    Go to checkout
+                  </button>
+                </div>
+              </div>
+            </div>
+    
           </div>
         </div>
-        <div class="row">
-        {% for item in cart %}
-        <div class="col-lg-4 col-md-4 col-12">
-            <div class="single-product">
-                <div class="product-img">
-                    <a href="#">
-                        <img class="default-img" src="{{ item.product.prodimg.url }}" alt="#">
-                        <span class="out-of-stock">Hot</span>
-                    </a>
-                </div>
-                <div class="product-content d-flex flex-column">
-                    <h3><a href="#">{{item.product.Title}}</a></h3>
-                    <div class="product-price">
-                        <span class="old">${{product.discounted_price}}0</span>
-                        <span>${{item.product.selling_price}}</span>
-                    </div>
-                </div>
-              
-              
+      </div>
+    {% else %}
+      <div class="nf_page container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-8 m-auto">
+                <p class="mb-50"><img src="{% static 'images/sukuna.png' %}" height="400px" width="700px" style="object-fit: contain;" alt="" class="hover-up"></p>
+                <p class="font-lg text-grey-700 mb-30">
+                  All right, the cart's feeling about as empty as a ninja village during a surprise attack!<br> Time to stock up on <a href="{% url 'category' 'toys' %}" style="color: #ed1b24;" onMouseOver="this.style.color='#b5121a'"
+                    onMouseOut="this.style.color='#ed1b24'"> <span> ninja supplies</span></a> and make that cart jutsu-worthy!
+                </p>
             </div>
         </div>
-        {% endfor %}
-        <!-- {% for product in products %}
-          <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="#" class="product-item md-height bg-gray d-block">
-              <img src="{{ product.prodimg.url }}" alt="Image" class="img-fluid">
-            </a>
-            <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
-            <strong class="item-price"><del>${{product.discounted_price}}</del> ${{product.selling_price}}</strong>
-          </div>
-          {% endfor %} -->
-        </div>
     </div>
+    {% endif %}
+  </div>
 </section>
-
-
 {% endblock main-content%}

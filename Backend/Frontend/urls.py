@@ -14,5 +14,10 @@ urlpatterns = [
     path("DecCart/",views.DecCart),
     path("RemoveItem/",views.RemoveItem),
     path("add_to_Order/",views.add_to_Order,name="add_to_Order"),
-    path("Orders/",views.Orders,name="Orders")
+    path("Orders/",views.Orders,name="Orders"),
+    path("search/",views.search,name="search"),
+    path("Incwish/",views.Incwish),
+    path("Decwish/",views.Decwish),
+    path("wishList/",views.wishList,name="wishList")
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

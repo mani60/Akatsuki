@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Category{% endblock title %}
+{% block main-content%}
+<section id="products" class="products">
+    <div class="container">
+        <div class="row">
+          <div class="title-sectioncol-12">
+            <h2 class="text-uppercase">Shadow Exploration</h2>
+          </div>
+        </div>
+        {% if products %}
+        <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="single-product">
+                <div class="product-img">
+                    <a href="{% url 'product-detail' product.id %}">
+                        <img class="default-img" src="{{ product.prodimg.url }}" alt="#">
+                        {% if product.quantity >= 1 %}
+                        <span class="out-of-stock">Hot</span>
+                        {% else %}
+                        <span class="out-of-stock">Out of Stock</span>
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="product-content d-flex flex-column">
+                    <h3><a href="{% url 'product-detail' product.id %}">{{product.Title}}</a></h3>
+                    <div class="product-price">
+                        <span class="old">${{product.discounted_price}}</span>
+                        <span>${{product.selling_price}}</span>
+                    </div>
+                </div>
+                {% if product.quantity >= 1 %}
+                <form action="/add_to_cart">
+                  <input type="hidden" name="prod_id" value="{{product.id}}">
+                  <button type="submit" class="cat_buy_now">Add to cart</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+        {% else %}
+      <div class="nf_page container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-8 m-auto">
+                <p class="mb-50"><img src="{% static 'images/HXH.png' %}" height="400px" width="700px" style="object-fit: contain;" alt="" class="hover-up"></p>
+                <p class="font-lg text-grey-700 mb-30">
+                    Nada! Our ninja radar detected more silence than a library in the Land of Silence.<br> Looks like the <a href="{% url 'category' 'manga' %}" style="color: #ed1b24;" onMouseOver="this.style.color='#b5121a'"
+                    onMouseOut="this.style.color='#ed1b24'"> <span> 'Hidden Leaf Sale' </span></a>  was too hidden for even our jutsu to uncover its treasures!
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    </div>
+</section>
+
+{% endblock main-content%}

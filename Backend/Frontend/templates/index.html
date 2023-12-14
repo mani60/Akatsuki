@@ -34,13 +34,13 @@
             <li><a href="{% url 'Orders' %}">Orders</a></li>
             <li><a href="#ContactUs">Contact</a></li>
         </div>
-        <form action="#">
-            <input type="search" placeholder="Search" class="search-input" />
-            <button class="fas fa-search"></button>
+        <form action="/search" role="search">
+            <input type="search" placeholder="Search" name="search_product" class="search-input" autocomplete="off" required />
+            <button type="submit" class="fas fa-search"></button>
         </form>
         <div class="checkout-contents">
-            <a href=""><lord-icon src="https://cdn.lordicon.com/jjoolpwc.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#e83a30" style="width:30px;height:30px"></lord-icon></a>
-            <a href="/cart"><lord-icon src="https://cdn.lordicon.com/gyandxnw.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#c71f16" style="width:30px;height:30px;"></lord-icon></a>
+            <a href="/wishList"><lord-icon src="https://cdn.lordicon.com/jjoolpwc.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#e83a30" style="width:30px;height:30px"></lord-icon>{% if wishitems > 0 %}<span class="wish_count"> {{ wishitems }}</span> {% endif %}</a>
+            <a href="/cart"><lord-icon src="https://cdn.lordicon.com/gyandxnw.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#c71f16" style="width:30px;height:30px;"></lord-icon> {% if totalitems > 0 %}<span class="cart_count"> {{ totalitems }}</span> {% endif %}</a>
         </div>
         </nav>
         {% block Banner %}

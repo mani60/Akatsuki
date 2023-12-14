@@ -1,25 +1,42 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from . models import Product,Cart,Order
+from . models import Product,Cart,Order,Wishlist
 from django.http import JsonResponse
 from django.db.models import Q
 # Create your views here.
 default = 5
 min_val = 1
 def home(request):
-    return render(request, "home.html")
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
+    return render(request, "home.html",locals())
 
 def about(request):
-    return render(request,"about_us.html")
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
+    return render(request,"about_us.html",locals())
 
 class category(View):
     def get(self,request,value):
+        totalitems=0
+        totalitems=len(Cart.objects.all())
+        wishitems=0
+        wishitems=len(Wishlist.objects.all())
         products=Product.objects.filter(category = value)
         return render(request,"category.html",locals())
 
 class productDetail(View):
     def get(self,request,pk):
+        totalitems=0
+        totalitems=len(Cart.objects.all())
+        wishitems=0
+        wishitems=len(Wishlist.objects.all())
         product = Product.objects.get(pk = pk)
+        wishlist=Wishlist.objects.filter(product=product).exists()
         p_cat = product.category
         R_prods = Product.objects.filter(category= p_cat).exclude(pk=pk)
         return render(request,"product_details.html",locals())
@@ -39,6 +56,10 @@ def add_to_cart(request):
     return redirect("/cart")
 
 def cart(request):
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
     cart = Cart.objects.all()
     amount = 0
     for p in cart:
@@ -137,6 +158,10 @@ def add_to_Order(request):
     return redirect("/Orders")
 
 def Orders(request):
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
     Orders = Order.objects.all()
     amount = 0
     for p in Orders:
@@ -144,3 +169,49 @@ def Orders(request):
     amount = round(amount, 2)
     total_amount = round(amount + 40,2)
     return render(request,"Orders.html",locals())
+
+
+def search(request):
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
+    query=request.GET["search_product"]
+    products=Product.objects.filter(Title__icontains=query)
+    return render(request,"search.html",locals())
+
+
+def Incwish(request):
+    if request.method == "GET":
+        prod_id =  request.GET['prod_id']
+        product=Product.objects.get(id=prod_id)
+        Wishlist(product=product).save()
+       
+        data={
+            'message':'added to wishlist successfully'
+            
+        }
+        return JsonResponse(data)
+
+def Decwish(request):
+    if request.method == "GET":
+        prod_id =  request.GET['prod_id']
+        product=Product.objects.get(id=prod_id)
+        Wishlist.objects.filter(product=product).delete()
+       
+        data={
+            'message':'removed from wishlist'
+            
+        }
+        return JsonResponse(data)
+    
+
+def wishList(request):
+    totalitems=0
+    totalitems=len(Cart.objects.all())
+    wishitems=0
+    wishitems=len(Wishlist.objects.all())
+    products = Wishlist.objects.all()
+    return render(request,"wishlist.html",locals())
+
+

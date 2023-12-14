@@ -68,3 +68,33 @@ async function del(ele){
   document.getElementById("t_amt").innerText = "$"+data.total_amount;
   ele.parentNode.parentNode.remove()
 }
+async function like(ele){
+  const id = ele.getAttribute('id').toString() 
+  let response = await fetch(
+    `/Incwish/?prod_id=${id}`,
+    {
+        method: 'GET',
+        headers:new Headers({
+            'Content-type': 'application/x-www-form-urlencoded',
+        }),
+    });
+  let data = await response.json();
+  location.reload();
+  console.log(data)
+ 
+}
+async function unlike(ele){
+  const id = ele.getAttribute('id').toString() 
+  let response = await fetch(
+    `/Decwish/?prod_id=${id}`,
+    {
+        method: 'GET',
+        headers:new Headers({
+            'Content-type': 'application/x-www-form-urlencoded',
+        }),
+    });
+  let data = await response.json();
+  location.reload();
+  console.log(data)
+ 
+}

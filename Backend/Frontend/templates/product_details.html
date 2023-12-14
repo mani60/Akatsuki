@@ -34,7 +34,17 @@
                             <input type="hidden" name="prod_id" value="{{product.id}}">
                             <button type="submit" class="add_btn btn btn-danger ms-2"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                         </form>
-                        <button type="button" class="add_btn btn btn-danger ms-2"><i class="fa fa-heart"></i></button>
+                        {% if wishlist %}
+                        <a class="add_btn btn btn-danger ms-2 like" id="{{product.id}}" onclick="unlike(this)">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                        {% else %}
+                        <a class="add_btn btn btn-danger ms-2 unlike" id="{{product.id}}" onclick="like(this)">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                        {% endif %}
+
+                       
                     </div>
                     {% endif %}
                 </div>
